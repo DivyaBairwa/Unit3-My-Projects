@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Youtube</h1>
+    <input type="text" id="search">
+    <button onClick="searchVideos()">Search</button>  
+    
+    <div id="search_results"></div>
+</body>
+</html>
+<script>
+
+//Youtube API = Reading documentation
+
+//array of object
+
+//append
+
+//find url
+
+//https://youtube.googleapis.com/youtube/v3/channels?part=snippets&key=[YOUR_API_KEY]
+// api key:-AIzaSyCsJopUuILvBhXMVMmkg6bSSxJcIhEFSeM
+
+const search_results_div=document.getElementById("search_results")
+const searchVideos = async () => {
+try {
+   let inp= document.getElementById("search").value
+
+   let res= await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${inp}&key=AIzaSyCsJopUuILvBhXMVMmkg6bSSxJcIhEFSeM&maxResults=20`);
+
+  var data= await res.json();
+  let videos=data.items;
+
+  appendVideos(videos);
+
+  console.log("data:",data);
+}catch (error){
+  console.log("error:", error);
+}
+};
+
+//possible mistake
+//1. async await not in pair
+//2. https
+//3.res.json()
+//4. seperate paras using &
+//5.wrong destination
+//6. spelling mistakes
+
+
+
+const appendVideos = (data) =>{
+  search_results_div.innerHTML = null;
+  try{
+    data.forEach((el) =>{
+    let div=document.createElement("div");
+   
+    let title = document.createElement("p");
+
+    title.innerText=el.snippet.title
+
+    let iframe = document.createElement("iframe");
+    
+    iframe.src="https://www.youtube.com/embed/${el.id.videoId}";
+
+    div.append(iframe, title);
+    search_results_div.append(div);
+  });
+  }catch(err){
+    console.log("err",err)
+  }
+  
+};
+//embeded - adding somthing
+//do you want to add a video to your app?
+//i want to embed my video
+//embeded url-https://www.youtube.com/embed/0XhV148Ery0
+
+</script>

@@ -1,0 +1,51 @@
+body{
+    font-family: sans-serif;
+}
+#navbar{
+    display: flex;
+    justify-content: flex-end;
+    border: 2px solid black;
+    width: 98%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color:  rgb(1, 60, 1);
+}
+#navbar>div{
+    padding: 20px;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    color:white;
+}
+#signup-form-div{
+    width: 20%;
+    margin:auto;
+    margin-top: 50px;
+    background-image: url("https://th.bing.com/th/id/OIP.ltgB9qpPVPwolAtG4_FfswHaJ4?pid=ImgDet&rs=1");
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 10px;
+    color:white;
+}
+#signup-form-div>form{
+    padding: 10px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    border:2px solid white;
+    text-align: center;
+}
+#signup-form-div>form>input{
+    margin-bottom: 20px;
+    height: 20px;
+    border: 2px solid white;
+}
+#submit{
+    width: 50%;
+    margin: auto;
+    background-color: rgb(1, 60, 1);
+    border: 3ps solid white;
+    color: white;
+    border-radius: 5px;
+}

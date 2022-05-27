@@ -1,0 +1,176 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing:border-box;
+
+}
+
+body{
+    /* height: 100vh; */
+    background-image:url("https://media.istockphoto.com/photos/frame-with-color-blobs-and-stains-isolated-on-white-background-picture-id469926320?k=6&m=469926320&s=612x612&w=0&h=dROApww83vWGfEfvvctqEMVpQ8yBAhMB2dmRQ-R1xNY=") ;
+    background-repeat: no-repeat; 
+    background-size: 100%;
+    
+}
+
+ .text-container{
+    position: absolute;
+    height:100%;
+    width:100%;
+}
+
+
+.multicolor-text {
+    text-align: center;
+    text-shadow:1px 1px 1px rgba(255, 255, 255, 0.25);
+    letter-spacing:30px;
+    font-size: 15em;
+    animation: textShadowAnim 1s ease-in infinite,
+    moveTextAnim 1s ease-in infinite;
+
+    background: linear-gradient(to left,
+            violet,
+            indigo,
+            blue,
+            green,
+            yellow,
+            orange,
+            red);
+    -webkit-background-clip : text;
+    -webkit-text-stroke: 1.5px red;
+    color: transparent; 
+    font-family:"poppins",'Gill Sans'
+    }
+
+.wish-text{
+    
+    text-align:center;
+    background:linear-gradient(90deg, black, white,yellow,pink,black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+    animation: moveTextAnim 2s 1s ease-in infinite;
+    font-size: 3em;
+}
+
+.bg-wrap{
+    width:100%;
+    height:100%;
+}
+
+svg{
+    width: 100%;
+    height:100%;
+}
+ul{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+ul li:nth-child(1)
+{
+    animation-delay:0s;
+    background:#ff0000;
+}
+ul li:nth-child(1){
+    animation-delay:0s;
+    background:#ff0000;
+}
+ul li:nth-child(6)
+ {
+    animation-delay:0s;
+    background:#ff0000;
+ }
+ ul li{
+     position:absolute;
+     top:0;
+     left:0;
+     display:block;
+     list-style:none;
+     background:yellow;
+     width:30px;
+     height:30px;
+     border-radius:50%;
+     filter:blur(10px);
+ }
+ ul li:nth-child(odd){
+     animation:animateOdd 6s linear infinite;
+ }
+ ul li:nth-child(even){
+    animation:animateEven 6s linear infinite;
+}
+
+
+ul li:nth-child(1)
+{
+    animation-delay:0s;
+    background:pink;
+}
+ul li:nth-child(1){
+    animation-delay:0s;
+    background:blue;
+}
+ul li:nth-child(6)
+ {
+    animation-delay:0s;
+    background:#ff0000;
+ }
+@keyframes textShadowAnim{
+    0%,100%{
+        text-shadow: none;
+    }
+    10%,90%{
+        text-shadow: 3px 3px 0 pink;
+    }
+    20%,80%{
+        text-shadow:3px 3px 0 #ff0000, 6px, 6px, 0 #ffa500;
+    }
+    30%,70%{
+        text-shadow: 3px 3px 0 #ff0000, 6px 6px 0 #ffa500,
+        9px 9px 0 #ffc0cb;
+    }
+    4%,60%{
+        text-shadow: 3px 3px 0 #ff0000, 6px 6px 0 #ffa500,
+        9px 9px 0 #ffc0cb;
+    }
+}
+
+@keyframes moveTextAnim{
+    0%,100%{
+        transform: translate(0px,0px);
+    }
+    40%,60%{
+        transform:translate(25px,25px);
+    }
+}
+
+@keyframes animateOdd{
+    0%{
+        transform: translate(0,0) scale(1);
+        opacity:1;
+    }
+    50%{
+        opacity:1;
+    }
+    100%{
+        transform: translate(300px, -600px) scale(12);
+        opacity:1;
+    }
+
+}
+@keyframes animateEven{
+    0%{
+        transform: translate(0,0) scale(1);
+        opacity:1;
+    }
+    50%{
+        opacity:1;
+    }
+    100%{
+        transform: translate(-300px, -600px) scale(12);
+        opacity:1;
+    }
+
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #main{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+  </style>
+
+  <body>
+    <div>
+      <h3 id="wallet">
+        <!--SHOW CURRENT WALLET VALUE HERE, ONLY THE NUMBER SHOULD BE VISIBLE-->
+        
+      </h3>
+    </div>
+
+    <div id="main">
+      <!--SHOW ALL THE VOUCEHRS DATA FROM API HERE( IMAGE, NAME AND PRICE)-->
+
+    </div>
+  </body>
+</html>
+
+<script type="module">
+  //WRITE YOUR LOGIC HERE
+
+let wallet=JSON.parse(localStorage.getItem("wallet"))
+document.querySelector("#wallet").append(wallet)
+async function forData(){ 
+    try{
+        let res= await fetch(`https://masai-vouchers-api.herokuapp.com/api/vouchers`)
+        let data= await res.json()
+        let info=data[0].vouchers
+        console.log(info)
+        append_info(info)
+       
+    }
+    catch(e){
+        console.log(e)
+    }
+}
+forData()
+
+function append_info(info){ 
+    info.forEach(element=>{ 
+        let div=document.createElement("div")
+
+        let image1=document.createElement("img")
+        image1.src=element.image
+
+        let title=document.createElement("p")
+        title.innerText=element.name
+        console.log(title)
+
+        let prc=document.createElement("p")
+        prc.innerText=element.price
+        console.log(prc)
+
+        let butt=document.createElement("button")
+        butt.innerText="Buy"
+        butt.setAttribute=("id","buy")
+
+        butt.addEventListener("click",function(){
+          buy(element)
+        })
+
+
+        div.append(image1,title,prc,butt)
+        document.querySelector("#main").append(div)
+    })
+}
+let buyarr=JSON.parse(localStorage.getItem("purchases")) ||[]
+function buy(element){
+ buyarr.push(element)
+ console.log(buyarr)
+ localStorage.setItem( "purchases",JSON.stringify(buyarr))
+}
+</script>

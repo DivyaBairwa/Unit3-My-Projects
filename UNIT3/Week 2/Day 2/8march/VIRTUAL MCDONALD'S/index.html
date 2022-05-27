@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color:black;
+        }
+
+        #container {
+            display: grid;
+            width: 170px;
+            margin: 80px auto;
+            gap: 10px;
+        }
+
+
+        #image {
+            display: flex;
+            width: 330px;
+            height: 300px;
+            margin-top: -20px;
+            margin-left:-75px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            
+
+
+        }
+
+        #orderId {
+            color:white;
+            margin-top:80px;
+            font-size:20px;
+        }
+
+        #food {
+            width: 85%;
+            height: 40px;
+            border-radius: 10px;
+            color:black;
+            text-align: center;
+            font-size: 25px;
+            margin-left:-30px;
+          
+        }
+
+        #button {
+
+            width:70%;
+            height: 35px;
+            border-radius: 10px;
+            color: black;
+            text-align: center;
+            font-size: 25px;
+            margin-left: -5px;
+        }
+
+        #button:hover {
+            background-color: rgb(199, 200, 200);
+        }
+
+        h2 {
+
+            text-align: center;
+        }
+        #div1{
+            border-radius:10px;
+            padding-bottom: 5%;
+            margin-top:40px;
+            margin-left:35%;
+            height:150px;
+            width:500px;
+            background-image: url("https://s3-ap-southeast-1.amazonaws.com/malaysiaserver/temp/images/20190221095153_201902210951531102846908.jpg");
+            border:10px solid white;
+        }
+        #fpreparing{
+            color:white;
+            margin-left:-45%;
+            font-size:30px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <div id="container">
+       
+            <select name="" id="food">
+                <option value="biriyani">Biriyani</option>
+                <option value="pizzaa">Pizaa</option>
+                <option value="redbull">Redbull</option>
+                <option value="Chaumeen">Chaumeen</option>
+                <option value="Momose">Momos</option>
+                <option value="Donut Sticks">Donut Sticks</option>
+                <option value="Cheeseburgers">Cheeseburgers</option>
+            </select>
+    
+            <button id="button">Order Food</button>
+    
+            <p id="orderId">
+    
+            </p>
+            <h2 id="fpreparing">Your food is about to ready...</h2>
+           <div id="image">
+    
+           </div>
+    
+        </div>
+    </div>
+    
+</body>
+
+</html>
+
+<script>
+
+
+    document.getElementById("button").addEventListener("click", orderFood)
+
+    function orderFood() {
+
+
+        let food = document.getElementById("food").value;
+
+        let status = "open";
+
+        let foodPromise = new Promise(function (resolve, reject) {
+            document.getElementById("fpreparing").innerText = "food is about to prepared";
+            document.getElementById("image").innerHTML = null;
+
+            let time = Math.random() * 10000;
+            let num = time;
+            if (status === "closed") {
+
+
+                reject("Shop closed ghar jao!");
+
+                shopeClose()
+
+            }
+
+
+            setTimeout(function () {
+
+
+                if (status === "open") {
+                    resolve(food)
+                    foodImage(food, num)
+
+                }
+
+            }, time)
+
+
+
+        })
+
+
+        foodPromise.then(function (response) {
+            console.log(`${response} is ready!`)
+        })
+
+
+        foodPromise.catch(function (error) {
+
+            console.log(`${error} is not ready!`)
+
+
+        })
+    }
+
+
+
+    function foodImage(food, num) {
+
+
+        let id = document.getElementById("orderId")
+        id.innerText = "Your Order ID:->" + (Math.floor(num));
+
+
+        let img = document.createElement('img')
+
+
+        let div = document.getElementById("image")
+
+        document.getElementById("fpreparing").innerText = "Yippy your food is ready...";
+        if (food == "biriyani") {
+            div.innerHTML = null;
+            img.src = "https://www.awesomecuisine.com/wp-content/uploads/2007/10/Chicken-Biryani_resized-500x436.jpg";
+
+        }
+        else if (food === "pizzaa") {
+            div.innerHTML = null;
+            img.src = "https://www.bing.com/th?id=OIP.a-UewhYPhQNOEYSHTnGkuAHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2";
+        }
+        else if (food === "Chaumeen") {
+            div.innerHTML = null;
+            img.src = "https://th.bing.com/th/id/OIP.G9W3LPiVlgRXxENQqemKpAHaEK?pid=ImgDet&rs=1";
+        }
+      
+        else if (food === "Momose") {
+            div.innerHTML = null;
+            img.src = "https://th.bing.com/th/id/OIP.aG7qW3hdlk6cb1qmIuyNtgHaE9?pid=ImgDet&rs=1";
+        }
+
+        else if (food === "Donut Sticks") {
+            div.innerHTML = null;
+            img.src = "https://i.pinimg.com/originals/7e/2e/fb/7e2efbfd61a61c5415eef721ff3c847f.jpg";
+        }
+
+        else if (food === "Cheeseburgers") {
+            div.innerHTML = null;
+            img.src = "https://th.bing.com/th/id/R.f3008b1e62eea6c6c1a8bfdf1ae3bc57?rik=u6W%2b9PsNvxAx2Q&riu=http%3a%2f%2fwallpapersdsc.net%2fwp-content%2fuploads%2f2016%2f09%2fCheeseburger-Wallpapers-HD.jpg&ehk=VcbVnazQ0ibBjB%2bO18HYk%2fxxBODQsaGeHDqRNZTAUpU%3d&risl=&pid=ImgRaw&r=0";
+        }
+
+    
+
+
+        div.append(img)
+
+    }
+
+
+
+
+    function shopeClose() {
+
+        let img = document.createElement('img')
+        img.src = "https://th.bing.com/th/id/R.9b3e3255076213ce42bdb6162822de4c?rik=xWthREOWPIG9yw&riu=http%3a%2f%2fspicygoulash.com%2fwp-content%2fuploads%2fshop-closed-600x375.jpg&ehk=xmPcBiKRo3F9Es4yJFqPZpXZ0iUrEfs%2bAPb9qtjgMO0%3d&risl=&pid=ImgRaw&r=0";
+
+
+        let div = document.getElementById("image")
+
+        div.innerHTML = null;
+        div.append(img)
+
+        document.getElementById("fpreparing").innerText = "Shop closed!";
+
+    }
+
+
+
+
+</script>

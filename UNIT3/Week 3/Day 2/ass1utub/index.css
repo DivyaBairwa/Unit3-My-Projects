@@ -1,0 +1,32 @@
+#search_results{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 50px;
+    /* margin: 50px 20px 0px 20px; */
+    margin: auto;
+}
+#navabar{
+    height:50px;
+    width:95%;
+    margin:auto;
+    display:flex;
+}
+img{
+    margin-left:3%;
+    height:20px;
+
+}
+#search{
+    margin-left:150px;
+    width:45%;
+    height:33px;
+    font-size:15px;
+   
+}
+#search1{
+    height:39px;
+    width:70px;
+   
+}
+
+

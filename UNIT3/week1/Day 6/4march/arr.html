@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Custom Array</h1>
+  </body>
+</html>
+<script>
+  function customArray() {
+    Object.defineProperty(this, "length", {
+      value: 0,
+      writable: true,
+      enumerable: false,
+    });
+
+    for (let i = 0; i < arguments.length; i++) {
+      this[i] = arguments[i];
+    }
+
+    this.length = arguments.length;
+  }
+
+  customArray.prototype.ownpush = function (value) {
+    let index = this.length;
+    this[index] = value;
+    this.length++;
+  };
+  customArray.prototype.ownreverse = function () {
+    let index = this.length - 1;
+    let arr = [];
+    for (var i = index; i >= 0; i--) {
+      arr.push(this[i]);
+    }
+    return arr;
+  };
+  customArray.prototype.ownshift = function () {
+    let index = this.length - this.length;
+    delete this[index];
+    this.length--;
+  };
+  let Array = new customArray("a", "b", "c", "d", "e");
+
+  Array.ownpush("g");
+  Array.ownpush("h");
+  //  Array.ownreverse();
+  //  Array.ownshift();
+
+  //  console.log("reverse Array is:", Object.values(Array.ownreverse()));
+  console.log(Array.ownreverse());
+  Array.ownshift();
+  console.log("Custom Array is:", Object.values(Array));
+
+  //  console.log("Custom Array is:", Object.values( Array));
+</script>

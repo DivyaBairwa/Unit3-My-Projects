@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="purchases">
+      <!--SHOW ALL YOUR PURCHASES HERE-->
+    </div>
+  </body>
+</html>
+
+<script>
+  //WRITE YOUR LOGIC HERE
+  let items=JSON.parse(localStorage.getItem("purchases"))
+ 
+  items.forEach(element=>{ 
+        let div=document.createElement("div")
+
+        let image1=document.createElement("img")
+        image1.src=element.image
+
+        let title=document.createElement("p")
+        title.innerText=element.name
+        console.log(title)
+
+        let prc=document.createElement("p")
+        prc.innerText=element.price
+        console.log(prc)
+
+        div.append(image1,title,prc)
+        document.querySelector("#purchases").append(div)
+    })
+  
+</script>

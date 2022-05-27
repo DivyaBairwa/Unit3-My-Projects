@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css">
+  </head>
+
+  <body>
+    <div id="main">
+      <!--No need to add sidebar here, directly display search results here only-->
+
+      <!-- show headline, description and image -->
+    </div>
+  </body>
+</html>
+
+<script type="module">
+
+let search= JSON.parse(localStorage.getItem('search1')) || []
+search.forEach((el) => {
+    
+
+    //add append logic here
+  let div = document.createElement('div');
+
+  let titdiv = document.createElement('div');
+  let title = document.createElement('p');
+  title.innerText = el.title;
+  title.addEventListener('click',()=>{
+      window.location.href = "blog.html";
+      Arr.push(el)
+     
+      localStorage.setItem("article",JSON.stringify(Arr))
+  })
+
+
+  let desdiv = document.createElement('div');
+  let des = document.createElement('p')
+  des.innerText = el.description;
+
+  let imgDiv = document.createElement('div')
+  imgDiv.setAttribute("id","imgDiv")
+  let image = document.createElement('img')
+  image.src = el.urlToImage;
+  imgDiv.append(image)
+
+  desdiv.append(des)
+  titdiv.append(title);
+
+  div.append(titdiv,desdiv,imgDiv)
+  main.append(div);
+});
+
+
+
+
+
+
+</script>
